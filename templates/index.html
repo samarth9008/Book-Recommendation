@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{{ url_for('static', filename='style/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+{% block body %}
+<div class="container">
+      <div class="login">
+         <div class="container">
+              <h1>Log in</h1>
+
+              <form method=POST action="{{ url_for('login') }}">
+              <input type="email" placeholder="Email" name="username" required autofocus>
+              <input type="password" placeholder="Password" name="pass" required minlength="4"><br>
+              <button type="submit">log in</button>
+              </form>
+
+         </div>
+      </div>
+
+      <div class="register">
+          <div class="container">
+              <i class="fas fa-user-plus fa-5x"></i>
+              <h2>Hello,friend!</h2>
+              <p>Enter your personal details and start journey with us</p>
+              <a href="{{ url_for('register') }}"><button type="submit">Register <i class="fas fa-arrow-circle-right"></i></button></a>
+          </div>
+      </div>
+</div>
+{% endblock %}
+</body>
+</html>

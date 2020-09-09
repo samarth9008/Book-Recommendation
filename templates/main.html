@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/admin.css') }}">
+</head>
+
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('logout') }}" class="btn btn-info btn-lg" style="float:right">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </div>
+
+    <!-- Content -->
+    <div class="main">
+        <div class="hipsum">
+            <div class="jumbotron">
+                <div class="container">
+                    <main class="grid">
+                        {% for i in x %}
+
+                        <article>
+
+                            <div class="text">
+                                <h3>{{ i['antecedents'] }}</h3>
+                                <h4>$ {{ i['Price'] }}</h4>
+                                <a href="{{ url_for('recommend',a=i['antecedents'], b=i['Price']) }}" class="btn btn-primary btn-block" >Buy Product</a>
+                            </div>
+                        </article>
+                        {% endfor %}
+
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

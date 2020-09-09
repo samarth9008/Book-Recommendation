@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/admin.css') }}">
+</head>
+
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('logout') }}" class="btn btn-info btn-lg" style="float:right">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+    </div>
+
+    <!-- Content -->
+    <div class="main">
+        <div class="hipsum">
+            <div class="jumbotron">
+                <div class="container">
+                    <main class="grid">
+
+                        <article>
+                            <div class="text">
+                              <h3>{{ request.args.get('a')}}</h3>
+                              <h4>Price: $ {{ request.args.get('b')}}</h4>
+                            </div>
+
+                        </article>
+
+                    </main>
+                    <article style="float:right">
+                            <div class="text float-right">
+                                <a href="{{ url_for('.index') }}"> <input type="submit" class="btn btn-success" value="Continue Shopping"></a>
+                                </div>
+                        </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- recommend -->
+
+   <div class="main">
+        <div class="hipsum">
+            <div class="jumbotron">
+                <div class="container">
+                     <h3>Recommended Product</h3>
+                    <main class="grid">
+                        {% for i in x %}
+                         {% if i['antecedents'] == request.args.get('a') %}
+                        <article>
+                            <div class="text">
+                              <h3>{{i['consequents']}}</h3>
+                              <h4>Price: $ {{i['Price_C'] }}</h4>
+                                <a href="{{ url_for('recommend',a=i['consequents'], b=i['Price_C']) }}" class="btn btn-primary btn-block" >Buy Product</a>
+                            </div>
+                        </article>
+                        {% endif %}
+                        {% endfor %}
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

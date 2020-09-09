@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link href="{{ url_for('static', filename='style/styles.css') }}" rel="stylesheet">
+
+</head>
+<body>
+{% block body %}
+
+      <div class="login">
+         <div class="container">
+              <h1>Register</h1>
+              <form method=POST action="{{ url_for('register') }}">
+              <input type="email" placeholder="Email" name="username" required autofocus>
+              <input type="password" placeholder="Password" name="pass" required minlength="4">
+              <input type="text" placeholder="PhoneNo" name="p_no" required >
+              <input type="text" placeholder="Age" name="age" required><br>
+              <button type="submit">Register</button>
+              </form>
+         </div>
+      </div>
+
+{% endblock %}
+</body>
+</html>
